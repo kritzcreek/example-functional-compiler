@@ -3,10 +3,10 @@ module Backend.Syntax where
 import Prelude
 
 import Data.Generic.Rep (class Generic)
+import Data.Generic.Rep.Show (genericShow)
 import Data.Map (Map)
 import Data.Map as Map
 import Data.Maybe (Maybe(..))
-import Data.Show.Generic (genericShow)
 import Partial.Unsafe (unsafeCrashWith)
 
 newtype VName = VName String
@@ -168,6 +168,3 @@ tuplesSnd =
     (vn "tpl") (Pair Unit (Pair Unit Unit))
     (Proj (vn "snd") Snd (vn "tpl")
      (AppCont (cn "halt") (vn "snd")))
-
-main :: Unit -> Term
-main _ = execTerm selfid
